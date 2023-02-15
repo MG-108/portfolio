@@ -24,7 +24,7 @@ const Header = () => {
         transition={{ duration: 0.6 }}
         className="app__header-info"
       >
-        {/* CARD */}
+        {/*presentation CARD */}
         <div className="app__header-badge">
           <div className="badge-cmp app__flex">
             <span>👋</span>
@@ -48,7 +48,7 @@ const Header = () => {
         className="app__header-img"
       >
         <img src={images.profile} alt="profile_bg" />
-        {/* CIRCLE IMG */}
+        {/* CIRCLE behind IMG */}
         <motion.img
           whileInView={{ scale: [0, 1] }}
           transition={{ duration: 1, ease: "easeInOut" }}
@@ -58,15 +58,15 @@ const Header = () => {
         />
       </motion.div>
 
-      {/* TECHNOLOGIES circles IMGS section */}
+      {/* TECHNOLOGIES IMGS section */}
       <motion.div
         variants={scaleVariants}
         whileInView={scaleVariants.whileInView}
         className="app__header-circles"
       >
-        {[images.sass, images.react, images.redux].map((circle, i) => (
+        {[images.sass, images.react, images.redux].map((tech, i) => (
           <div className="circle-cmp app__flex " key={`circle-${i}`}>
-            <img src={circle} alt="circle" />
+            <img src={tech} alt="circle" />
           </div>
         ))}
       </motion.div>
