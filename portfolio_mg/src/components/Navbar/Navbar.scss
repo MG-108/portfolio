@@ -81,7 +81,6 @@
 
 // MOBILE
 .app__navbar-menu {
-  //menu icon
   width: 35px;
   height: 35px;
   border-radius: 50%;
@@ -92,6 +91,7 @@
   align-items: center;
 
   background-color: var(--secondary-color);
+  //menu icon
   svg {
     width: 70%;
     height: 70%;
@@ -112,17 +112,17 @@
     width: 80%;
     height: 100vh;
 
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
-    flex-direction: column;
+    box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
 
     background: url("../../assets//bgWhite.png");
     background-color: var(--white-color);
     background-size: cover;
     background-repeat: repeat;
 
-    box-shadow: 0 0 20px rgba(168, 168, 168, 0.15);
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
 
     //close icon
     svg {
