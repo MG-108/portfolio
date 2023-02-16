@@ -15,6 +15,8 @@ const scaleVariants = {
   },
 };
 
+const skillImages = [images.sass, images.react, images.redux];
+
 const Header = () => {
   return (
     <div id="home" className="app__header app__flex">
@@ -64,9 +66,9 @@ const Header = () => {
         whileInView={scaleVariants.whileInView}
         className="app__header-circles"
       >
-        {[images.sass, images.react, images.redux].map((tech, i) => (
-          <div className="circle-cmp app__flex " key={`circle-${i}`}>
-            <img src={tech} alt="circle" />
+        {skillImages.map((skill, i) => (
+          <div className="app__flex" key={`circle-${i}`}>
+            <img src={skill} alt="circle" />
           </div>
         ))}
       </motion.div>
