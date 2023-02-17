@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useQuery } from "react-query";
 import { motion } from "framer-motion";
 
 import { AppWrap } from "../../wrapper";
@@ -8,11 +9,12 @@ import { urlFor, client } from "../../client";
 const About = () => {
   const [abouts, setAbouts] = useState([]);
 
-  useEffect(() => {
-    const query = '*[_type == "abouts"] ';
+  const query = '*[_type == "abouts"] ';
 
-    client.fetch(query).then((data) => setAbouts(data));
-  }, []);
+  const { isLoading, isError, data, error } = useQuery(query, async () => {
+    const data = await client.fetch(query);
+    return setAbouts(data);
+  });
 
   return (
     <>

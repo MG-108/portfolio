@@ -61,7 +61,7 @@
       text-transform: uppercase;
       font-weight: 500;
 
-      transition: all 0.3 ease-in-out;
+      transition: all 0.3s ease-in-out;
 
       &:hover {
         color: var(--secondary-color);
@@ -155,7 +155,7 @@
           text-transform: uppercase;
           font-weight: 500;
 
-          transition: all 0.3 ease-in-out;
+          transition: all 0.3s ease-in-out;
 
           &:hover {
             color: var(--secondary-color);
