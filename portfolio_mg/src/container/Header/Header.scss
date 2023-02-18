@@ -4,14 +4,13 @@
   background-size: cover;
   background-repeat: repeat;
   background-position: center;
-}
 
-// disable the default padding styles
-.app__wrapper {
-  padding: 0;
-
-  .copyright {
-    display: none;
+  // disable the default padding styles
+  .app__wrapper {
+    padding: 0;
+    .copyright {
+      display: none;
+    }
   }
 }
 
@@ -20,7 +19,7 @@
   width: 100%;
   height: 100%;
   flex-direction: row;
-  padding: 2rem 2rem 0;
+  padding: 6rem 2rem 0rem;
 
   // XL DEVICES
   @media screen and (min-width: 2000px) {
@@ -34,7 +33,7 @@
 
   // MOBILE
   @media screen and (max-width: 450px) {
-    padding: 2rem 1rem 2rem;
+    padding: 6rem 1rem 2rem;
   }
 }
 

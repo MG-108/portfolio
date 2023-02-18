@@ -16,7 +16,7 @@ const Work = () => {
 
   const projectsCategories = ["React JS", "UI/UX", "Web App", "All"];
 
-  const query = '*[_type == "works"]';
+  const query = '*[_type == "works"] | order(_createdAt asc)';
   const { isLoading, isError, data, error } = useQuery(query, async () => {
     const data = await client.fetch(query);
     return setWorks(data), setFilterWork(data);
@@ -106,6 +106,7 @@ const Work = () => {
               </motion.div>
             </div>
 
+            {/* PROJECT DETAILS */}
             <div className="app__work-content app__flex">
               <h4 className="bold-text">{work.title}</h4>
               <p className="p-text" style={{ marginTop: 10 }}>

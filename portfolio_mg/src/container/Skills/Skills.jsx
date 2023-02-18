@@ -1,9 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useQuery } from "react-query";
+
+import { motion } from "framer-motion";
+
+import { AppWrap } from "../../wrapper";
+import { urlFor, client } from "../../client";
 
 import "./Skills.scss";
 
 const Skills = () => {
-  return <div>Skills</div>;
+  const [skills, setSkills] = useState([]);
+
+  const query = '*[_type == "skills"] | order(_createdAt asc)';
+  const { isLoading, isError, data, error } = useQuery(query, async () => {
+    const data = await client.fetch(query);
+    return setSkills(data);
+  });
+
+  return (
+    <>
+      <h2 className="head-text">Skills </h2>
+
+      <div className="app__skills-container">
+        <motion.div className="app__skills-list">
+          {skills.map((skill, i) => (
+            <motion.div
+              whileInView={{ opacity: [0, 1] }}
+              transition={{ duration: 0.5 }}
+              className="app__skills-item app__flex"
+              key={skill.name + i}
+            >
+              <div
+                className="app__flex"
+                style={{ backgroundColor: skill.bgColor }}
+              >
+                <img src={urlFor(skill.icon)} alt={skill.name} />
+              </div>
+
+              <p className="p-text">{skill.name}</p>
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </>
+  );
 };
 
-export default Skills;
+export default AppWrap(Skills, "skills");
