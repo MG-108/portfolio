@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "react-query";
 import { motion } from "framer-motion";
 
-import { AppWrap } from "../../wrapper";
+import { AppWrap, MotionWrap } from "../../wrapper";
 import "./About.scss";
 import { urlFor, client } from "../../client";
 
@@ -18,7 +18,7 @@ const About = () => {
 
   return (
     <>
-      <h2 className="head-text">
+      <h2 className="head-text about-title">
         I Know That{" "}
         <span>
           Good Apps <br />
@@ -49,4 +49,8 @@ const About = () => {
   );
 };
 
-export default AppWrap(About, "about");
+export default AppWrap(
+  MotionWrap(About, "app__about"),
+  "about",
+  "app__whitebg"
+);

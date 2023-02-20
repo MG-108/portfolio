@@ -80,7 +80,7 @@ const Work = () => {
                 }}
                 className="app__work-hover app__flex"
               >
-                {/* PROJECT LINK */}
+                {/* PROJECT LINK ON HOVER*/}
                 <a href={work.projectLink} target="_blank" rel="noreferrer">
                   <motion.div
                     whileInView={{ scale: [0, 1] }}
@@ -92,7 +92,7 @@ const Work = () => {
                   </motion.div>
                 </a>
 
-                {/* CODE LINK */}
+                {/* CODE LINK ON HOVER */}
                 <a href={work.codeLink} target="_blank" rel="noreferrer">
                   <motion.div
                     whileInView={{ scale: [0, 1] }}

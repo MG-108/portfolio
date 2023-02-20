@@ -4,6 +4,12 @@
   flex-direction: column;
 }
 
+.about-title {
+  @media screen and (min-width: 1500px) {
+    margin-top: 7rem;
+  }
+}
+
 .app__profile {
   display: flex;
   justify-content: center;
