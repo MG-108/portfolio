@@ -14,7 +14,7 @@ const Work = () => {
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
 
-  const projectsCategories = ["React JS", "UI/UX", "Web App", "All"];
+  const projectsCategories = ["Redux", "Web App", "UI/UX", "All"];
 
   const query = '*[_type == "works"] | order(_createdAt asc)';
   const { isLoading, isError, data, error } = useQuery(query, async () => {

@@ -1,17 +1,24 @@
-import React from "react";
-import { BsTwitter } from "react-icons/bs";
-import { FaFacebook } from "react-icons/fa";
+import { BsLinkedin } from "react-icons/bs";
+import { AiFillGithub } from "react-icons/ai";
 
 const SocialMedia = () => {
   return (
     <div className="app__social">
-      <div>
-        <BsTwitter />
-      </div>
+      <a
+        href="https://www.linkedin.com/in/matheus-ghignatti-758439209/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <BsLinkedin />
+      </a>
 
-      <div>
-        <FaFacebook />
-      </div>
+      <a
+        href="https://github.com/MG-108"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <AiFillGithub />
+      </a>
     </div>
   );
 };

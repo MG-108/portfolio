@@ -16,7 +16,7 @@ const scaleVariants = {
   },
 };
 
-const skillImages = [images.sass, images.react, images.redux];
+const skillImages = [images.javascript, images.react, images.sass];
 
 const Header = () => {
   return (
@@ -44,13 +44,13 @@ const Header = () => {
         </div>
       </motion.div>
 
-      {/* PROFILE IMG */}
+      {/* PROFILE(planet) IMG */}
       <motion.div
-        whileInView={{ x: [-100, 0], opacity: [0, 1] }}
+        whileInView={{ scale: [0, 1] }}
         transition={{ duration: 0.6, delayChildren: 0.5 }}
         className="app__header-img"
       >
-        <img src={images.profile} alt="profile_bg" />
+        <img src={images.profile8} alt="profile_bg" />
         {/* CIRCLE behind IMG */}
         <motion.img
           whileInView={{ scale: [0, 1] }}

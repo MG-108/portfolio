@@ -26,7 +26,7 @@
     margin: 1rem 0;
     padding: 1rem;
     border-radius: 10px;
-    cursor: pointer;
+
     background-color: #f2f7fb;
 
     transition: all 0.3s ease-in-out;
@@ -37,12 +37,13 @@
       margin: 0 0.7rem;
     }
 
-    p {
+    a {
       font-weight: 500;
     }
     a {
       text-decoration: none;
       font-weight: 500;
+      cursor: pointer;
     }
     &:hover {
       box-shadow: 0 0 25px #f2f7fb;
