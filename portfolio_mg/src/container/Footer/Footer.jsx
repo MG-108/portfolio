@@ -39,7 +39,7 @@ const Footer = () => {
       {!isFormSubmitted ? (
         <form
           target="_blank"
-          action="https://formsubmit.co/36575c4df222eeb5925dc50d569a37f2"
+          action="https://formsubmit.co/devghignatti@gmail.com"
           method="POST"
           onSubmit={onSubmit}
           className="app__footer-form app__flex"
@@ -122,3 +122,4 @@ export default AppWrap(
   "contact",
   "app__whitebg"
 );
+Footer;
