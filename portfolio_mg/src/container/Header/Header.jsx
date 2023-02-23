@@ -1,4 +1,3 @@
-import React from "react";
 import { motion } from "framer-motion";
 
 import { AppWrap } from "../../wrapper";
@@ -10,7 +9,7 @@ const scaleVariants = {
     scale: [0, 1],
     opacity: [0, 1],
     transition: {
-      duration: 1,
+      duration: 0.5,
       ease: "easeInOut",
     },
   },
@@ -38,8 +37,8 @@ const Header = () => {
           </div>
 
           <div className="tag-cmp app__flex">
-            <p className="p-text">Web Developer</p>
             <p className="p-text">Front-End</p>
+            <p className="p-text">Web Developer</p>
           </div>
         </div>
       </motion.div>

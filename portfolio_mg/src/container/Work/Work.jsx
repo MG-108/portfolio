@@ -9,7 +9,7 @@ import { urlFor, client } from "../../client";
 import "./Work.scss";
 
 const Work = () => {
-  const [activeFilter, setActiveFilter] = useState("All");
+  const [activeFilter, setActiveFilter] = useState("Redux");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
@@ -19,7 +19,10 @@ const Work = () => {
   const query = '*[_type == "works"] | order(_createdAt asc)';
   const { isLoading, isError, data, error } = useQuery(query, async () => {
     const data = await client.fetch(query);
-    return setWorks(data), setFilterWork(data);
+    return (
+      setWorks(data),
+      setFilterWork(data.filter((work) => work.tags.includes(activeFilter)))
+    );
   });
 
   const handleWorkFilter = (item) => {
@@ -29,8 +32,8 @@ const Work = () => {
     setTimeout(() => {
       setAnimateCard([{ y: 0, opacity: 1 }]);
 
-      if (item === "All") {
-        setFilterWork(works);
+      if (item === "Redux") {
+        setFilterWork(works.filter((work) => work.tags.includes(item)));
       } else {
         setFilterWork(works.filter((work) => work.tags.includes(item)));
       }
@@ -39,12 +42,7 @@ const Work = () => {
 
   return (
     <>
-      <h2 className="head-text">
-        My creative{" "}
-        <span>
-          Portfolio <br />
-        </span>
-      </h2>
+      <h2 className="head-text">Portfolio</h2>
 
       <div className="app__work-filter">
         {projectsCategories.map((item, index) => (

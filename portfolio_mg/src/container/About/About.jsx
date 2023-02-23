@@ -9,7 +9,7 @@ import { urlFor, client } from "../../client";
 const About = () => {
   const [abouts, setAbouts] = useState([]);
 
-  const query = '*[_type == "abouts"] ';
+  const query = '*[_type == "abouts"] | order(_createdAt asc) ';
 
   const { isLoading, isError, data, error } = useQuery(query, async () => {
     const data = await client.fetch(query);

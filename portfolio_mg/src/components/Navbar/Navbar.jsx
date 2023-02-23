@@ -14,7 +14,7 @@ const Navbar = () => {
     <nav className="app__navbar">
       {/* LOGO IMG */}
       <div className="app__navbar-logo">
-        <img src={images.logo} alt="logo" />
+        <img src={images.mgLogo} alt="logo" />
       </div>
 
       {/* Desktop Nav */}

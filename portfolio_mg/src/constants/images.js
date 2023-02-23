@@ -24,10 +24,8 @@ import about03 from "../assets/about03.png";
 import about04 from "../assets/about04.png";
 
 import profile8 from "../assets/profile8.png";
-
+import mgLogo from "../assets/mgLogo.png";
 import circle from "../assets/circle.svg";
-import logo from "../assets/logo.png";
-
 import adidas from "../assets/adidas.png";
 import amazon from "../assets/amazon.png";
 import asus from "../assets/asus.png";
@@ -60,10 +58,8 @@ export default {
   about02,
   about03,
   about04,
-
   profile8,
   circle,
-  logo,
   adidas,
   amazon,
   asus,
@@ -71,4 +67,5 @@ export default {
   nb,
   skype,
   spotify,
+  mgLogo,
 };

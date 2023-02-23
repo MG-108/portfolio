@@ -1,5 +1,3 @@
-import React from "react";
-
 const NavigationDots = ({ active }) => {
   const navLinks = ["home", "about", "work", "skills", "contact"];
   return (
