@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { AppWrap } from "../../wrapper";
 import { images } from "../../constants";
 import "./Header.scss";
+import { HoverTextAnimation } from "../../components";
 
 const scaleVariants = {
   whileInView: {
@@ -37,8 +38,17 @@ const Header = () => {
           </div>
 
           <div className="tag-cmp app__flex">
-            <p className="p-text">Front-End</p>
-            <p className="p-text">Web Developer</p>
+            <HoverTextAnimation
+              tag={"p"}
+              text={"Front-End"}
+              className={"p-text"}
+            />
+
+            <HoverTextAnimation
+              tag={"p"}
+              text={"Web Developer"}
+              className={"p-text"}
+            />
           </div>
         </div>
       </motion.div>

@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { images } from "../../constants";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { useForm } from "react-hook-form";
 import "./Footer.scss";
+import { HoverTextAnimation } from "../../components";
 
 const Footer = () => {
   const {
@@ -20,7 +21,11 @@ const Footer = () => {
   };
   return (
     <>
-      <h2 className="head-text">Contact me</h2>
+      <HoverTextAnimation
+        tag={"h2"}
+        text={"Contact me"}
+        className={"head-text"}
+      />
       <div className="app__footer-cards">
         <div className="app__footer-card ">
           <img src={images.email} alt="email" />
@@ -32,7 +37,7 @@ const Footer = () => {
       {/* FORM  */}
 
       <form
-        action="https://formsubmit.co/devghignatti@gmail.com"
+        action="https://formsubmit.co/36575c4df222eeb5925dc50d569a37f2"
         method="POST"
         onSubmit={onSubmit}
         target="_blank"

@@ -7,6 +7,7 @@ import { motion } from "framer-motion";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 import "./Work.scss";
+import { HoverTextAnimation } from "../../components";
 
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("Redux");
@@ -37,12 +38,16 @@ const Work = () => {
       } else {
         setFilterWork(works.filter((work) => work.tags.includes(item)));
       }
-    }, 500);
+    }, 250);
   };
 
   return (
     <>
-      <h2 className="head-text">Portfolio</h2>
+      <HoverTextAnimation
+        tag={"h2"}
+        text={"Portfolio"}
+        className={"head-text"}
+      />
 
       <div className="app__work-filter">
         {projectsCategories.map((item, index) => (

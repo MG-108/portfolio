@@ -45,6 +45,7 @@
       font-weight: 500;
       cursor: pointer;
     }
+
     &:hover {
       box-shadow: 0 0 25px #f2f7fb;
     }
@@ -78,13 +79,18 @@
     textarea {
       width: 100%;
       padding: 0.95rem;
-      border: none;
-      border-radius: 7px;
-      background-color: var(--primary-color);
 
-      font-family: var(--font-base);
-      color: var(--secondary-color);
+      background-color: var(--primary-color);
+      border-radius: 7px;
+      border: 1px solid var(--primary-color);
       outline: none;
+
+      color: var(--secondary-color);
+      font-family: var(--font-base);
+
+      &:focus {
+        border-color: #4549ff;
+      }
     }
 
     textarea {

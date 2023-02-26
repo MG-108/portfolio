@@ -7,6 +7,7 @@ import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
 
 import "./Skills.scss";
+import { HoverTextAnimation } from "../../components";
 
 const Skills = () => {
   const [skills, setSkills] = useState([]);
@@ -19,7 +20,7 @@ const Skills = () => {
 
   return (
     <>
-      <h2 className="head-text">Skills </h2>
+      <HoverTextAnimation tag={"h2"} text="Skills" className={"head-text"} />
 
       <div className="app__skills-container">
         <motion.div className="app__skills-list">
