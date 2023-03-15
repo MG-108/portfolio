@@ -24,6 +24,7 @@ const Header = () => {
       {/* HEADER */}
       <motion.div
         whileInView={{ x: [-100, 0], opacity: [0, 1] }}
+        viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         className="app__header-info"
       >
