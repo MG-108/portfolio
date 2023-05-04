@@ -1,28 +1,29 @@
-import React, { useState } from "react";
-import { useQuery } from "react-query";
+import React, { useState } from 'react';
+import { useQuery } from 'react-query';
 
-import { AiFillEye, AiFillGithub } from "react-icons/ai";
-import { motion } from "framer-motion";
+import { AiFillEye, AiFillGithub } from 'react-icons/ai';
+import { motion } from 'framer-motion';
 
-import { AppWrap, MotionWrap } from "../../wrapper";
-import { urlFor, client } from "../../client";
-import "./Work.scss";
-import { HoverTextAnimation } from "../../components";
+import { AppWrap, MotionWrap } from '../../wrapper';
+import { urlFor, client } from '../../client';
+import './Work.scss';
+import { HoverTextAnimation } from '../../components';
 
 const Work = () => {
-  const [activeFilter, setActiveFilter] = useState("Redux");
+  const [activeFilter, setActiveFilter] = useState('Redux');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
 
-  const projectsCategories = ["Redux", "Web App", "UI/UX", "All"];
+  const projectsCategories = ['Redux', 'Web App', 'UI/UX', 'All'];
 
   const query = '*[_type == "works"] | order(_createdAt asc)';
+
   const { isLoading, isError, data, error } = useQuery(query, async () => {
-    const data = await client.fetch(query);
+    const response = await client.fetch(query);
     return (
-      setWorks(data),
-      setFilterWork(data.filter((work) => work.tags.includes(activeFilter)))
+      setWorks(response),
+      setFilterWork(response.filter((work) => work.tags.includes(activeFilter)))
     );
   });
 
@@ -33,20 +34,16 @@ const Work = () => {
     setTimeout(() => {
       setAnimateCard([{ y: 0, opacity: 1 }]);
 
-      if (item === "Redux") {
-        setFilterWork(works.filter((work) => work.tags.includes(item)));
-      } else {
-        setFilterWork(works.filter((work) => work.tags.includes(item)));
-      }
+      setFilterWork(works.filter((work) => work.tags.includes(item)));
     }, 250);
   };
 
   return (
     <>
       <HoverTextAnimation
-        tag={"h2"}
-        text={"Portfolio"}
-        className={"head-text"}
+        tag={'h2'}
+        text={'Portfolio'}
+        className={'head-text'}
       />
 
       <div className="app__work-filter">
@@ -54,7 +51,7 @@ const Work = () => {
           <div
             key={index}
             className={`app__work-filter-item app__flex p-text ${
-              activeFilter === item ? "item-active" : ""
+              activeFilter === item ? 'item-active' : ''
             }`}
             onClick={() => handleWorkFilter(item)}
           >
@@ -78,7 +75,7 @@ const Work = () => {
                 whileHover={{ opacity: [0, 1] }}
                 transition={{
                   duration: 0.25,
-                  ease: "easeInOut",
+                  ease: 'easeInOut',
                   staggerChildren: 0.5,
                 }}
                 className="app__work-hover app__flex"
@@ -117,7 +114,7 @@ const Work = () => {
               </p>
 
               <div className="app__work-tag app__flex">
-                <p className="p-text"> {work.tags ? work.tags[0] : ""}</p>
+                <p className="p-text"> {work.tags ? work.tags[0] : ''}</p>
               </div>
             </div>
           </div>
@@ -128,7 +125,7 @@ const Work = () => {
 };
 
 export default AppWrap(
-  MotionWrap(Work, "app__works"),
-  "work",
-  "app__primarybg"
+  MotionWrap(Work, 'app__works'),
+  'work',
+  'app__primarybg'
 );
