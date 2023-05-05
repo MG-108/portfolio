@@ -1,30 +1,35 @@
-import { useState } from "react";
-import { useQuery } from "react-query";
+import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion';
 
-import { AppWrap, MotionWrap } from "../../wrapper";
-import { urlFor, client } from "../../client";
+import { AppWrap, MotionWrap } from '../../wrapper';
+import { urlFor, client } from '../../client';
 
-import "./Skills.scss";
-import { HoverTextAnimation } from "../../components";
+import './Skills.scss';
+import { HoverTextAnimation } from '../../components';
 
 const Skills = () => {
-  const [skills, setSkills] = useState([]);
-
   const query = '*[_type == "skills"] | order(_createdAt asc)';
-  const { isLoading, isError, data, error } = useQuery(query, async () => {
-    const data = await client.fetch(query);
-    return setSkills(data);
+
+  const { data, isLoading, error } = useQuery({
+    queryKey: ['skillsData'],
+    queryFn: async () => {
+      const response = await client.fetch(query);
+
+      return response;
+    },
   });
+
+  if (isLoading) return <div>Loading</div>;
 
   return (
     <>
-      <HoverTextAnimation tag={"h2"} text="Skills" className={"head-text"} />
+      <HoverTextAnimation tag={'h2'} text="Skills" className={'head-text'} />
 
       <div className="app__skills-container">
         <motion.div className="app__skills-list">
-          {skills.map((skill, i) => (
+          {data.map((skill, i) => (
             <motion.div
               whileInView={{ opacity: [0, 1] }}
               transition={{ duration: 0.5 }}
@@ -47,7 +52,7 @@ const Skills = () => {
   );
 };
 export default AppWrap(
-  MotionWrap(Skills, "app__skills"),
-  "skills",
-  "app__primarybg"
+  MotionWrap(Skills, 'app__skills'),
+  'skills',
+  'app__primarybg'
 );

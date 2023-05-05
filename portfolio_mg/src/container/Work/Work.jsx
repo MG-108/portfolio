@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { motion } from 'framer-motion';
@@ -15,16 +15,22 @@ const Work = () => {
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
 
-  const projectsCategories = ['Redux', 'Web App', 'UI/UX', 'All'];
+  const projectsCategories = ['Redux', 'Web App', 'UI/UX'];
 
   const query = '*[_type == "works"] | order(_createdAt asc)';
 
-  const { isLoading, isError, data, error } = useQuery(query, async () => {
-    const response = await client.fetch(query);
-    return (
-      setWorks(response),
-      setFilterWork(response.filter((work) => work.tags.includes(activeFilter)))
-    );
+  const { isLoading } = useQuery({
+    queryKey: ['workData'],
+    queryFn: async () => {
+      const response = await client.fetch(query);
+
+      setWorks(response);
+      setFilterWork(
+        response.filter((work) => work.tags.includes(activeFilter))
+      );
+
+      return response;
+    },
   });
 
   const handleWorkFilter = (item) => {
@@ -37,6 +43,8 @@ const Work = () => {
       setFilterWork(works.filter((work) => work.tags.includes(item)));
     }, 250);
   };
+
+  if (isLoading) return <div>Loading...</div>;
 
   return (
     <>
