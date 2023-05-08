@@ -1,16 +1,15 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from "@tanstack/react-query";
+import { motion } from "framer-motion";
 
-import { motion } from 'framer-motion';
-
-import { AppWrap, MotionWrap } from '../../wrapper';
-import './About.scss';
-import { urlFor, client } from '../../client';
+import { urlFor, client } from "../../client";
+import { AppWrap, MotionWrap } from "../../wrapper";
+import "./About.scss";
 
 const About = () => {
   const query = `*[_type == "abouts"] | order(_createdAt asc)`;
 
   const { data, isLoading, error } = useQuery({
-    queryKey: ['aboutData'],
+    queryKey: ["aboutData"],
     queryFn: async () => {
       const response = await client.fetch(query);
 
@@ -23,7 +22,7 @@ const About = () => {
   return (
     <>
       <h2 className="head-text about-title">
-        I Know That{' '}
+        I Know That{" "}
         <span>
           Good Apps <br />
         </span>
@@ -35,7 +34,7 @@ const About = () => {
           <motion.div
             whileInView={{ opacity: 1 }}
             whileHover={{ scale: 1.1 }}
-            transition={{ duration: 0.5, type: 'tween' }}
+            transition={{ duration: 0.5, type: "tween" }}
             className="app__profile-item"
             key={about.title + i}
           >
@@ -54,7 +53,7 @@ const About = () => {
 };
 
 export default AppWrap(
-  MotionWrap(About, 'app__about'),
-  'about',
-  'app__whitebg'
+  MotionWrap(About, "app__about"),
+  "about",
+  "app__whitebg"
 );

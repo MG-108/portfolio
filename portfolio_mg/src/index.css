@@ -11,6 +11,7 @@
 
   --white-color: #ffffff;
   --white-hover: #fef4f5;
+  --red-required: rgb(255, 0, 0);
 }
 
 * {

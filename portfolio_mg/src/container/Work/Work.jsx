@@ -1,26 +1,25 @@
-import React, { useState } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { AiFillEye, AiFillGithub } from "react-icons/ai";
+import { motion } from "framer-motion";
 
-import { AiFillEye, AiFillGithub } from 'react-icons/ai';
-import { motion } from 'framer-motion';
-
-import { AppWrap, MotionWrap } from '../../wrapper';
-import { urlFor, client } from '../../client';
-import './Work.scss';
-import { HoverTextAnimation } from '../../components';
+import { AppWrap, MotionWrap } from "../../wrapper";
+import { urlFor, client } from "../../client";
+import { HoverTextAnimation } from "../../components";
+import "./Work.scss";
 
 const Work = () => {
-  const [activeFilter, setActiveFilter] = useState('Redux');
+  const [activeFilter, setActiveFilter] = useState("Redux");
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
 
-  const projectsCategories = ['Redux', 'Web App', 'UI/UX'];
+  const projectsCategories = ["Redux", "Web App", "UI/UX"];
 
   const query = '*[_type == "works"] | order(_createdAt asc)';
 
   const { isLoading } = useQuery({
-    queryKey: ['workData'],
+    queryKey: ["workData"],
     queryFn: async () => {
       const response = await client.fetch(query);
 
@@ -49,9 +48,9 @@ const Work = () => {
   return (
     <>
       <HoverTextAnimation
-        tag={'h2'}
-        text={'Portfolio'}
-        className={'head-text'}
+        tag={"h2"}
+        text={"Portfolio"}
+        className={"head-text"}
       />
 
       <div className="app__work-filter">
@@ -59,7 +58,7 @@ const Work = () => {
           <div
             key={index}
             className={`app__work-filter-item app__flex p-text ${
-              activeFilter === item ? 'item-active' : ''
+              activeFilter === item ? "item-active" : ""
             }`}
             onClick={() => handleWorkFilter(item)}
           >
@@ -83,7 +82,7 @@ const Work = () => {
                 whileHover={{ opacity: [0, 1] }}
                 transition={{
                   duration: 0.25,
-                  ease: 'easeInOut',
+                  ease: "easeInOut",
                   staggerChildren: 0.5,
                 }}
                 className="app__work-hover app__flex"
@@ -122,7 +121,7 @@ const Work = () => {
               </p>
 
               <div className="app__work-tag app__flex">
-                <p className="p-text"> {work.tags ? work.tags[0] : ''}</p>
+                <p className="p-text"> {work.tags ? work.tags[0] : ""}</p>
               </div>
             </div>
           </div>
@@ -133,7 +132,7 @@ const Work = () => {
 };
 
 export default AppWrap(
-  MotionWrap(Work, 'app__works'),
-  'work',
-  'app__primarybg'
+  MotionWrap(Work, "app__works"),
+  "work",
+  "app__primarybg"
 );
