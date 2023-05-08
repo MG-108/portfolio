@@ -10,8 +10,15 @@ const scaleVariants = {
     scale: [0, 1],
     opacity: [0, 1],
     transition: {
-      duration: 0.5,
-      ease: "easeInOut",
+      duration: 0.8,
+      ease: "easeIn",
+    },
+  },
+  animate: {
+    y: [-40, 40],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
     },
   },
 };
@@ -75,6 +82,7 @@ const Header = () => {
       <motion.div
         variants={scaleVariants}
         whileInView={scaleVariants.whileInView}
+        animate={scaleVariants.animate}
         className="app__header-circles"
       >
         {skillImages.map((skill, i) => (

@@ -6,6 +6,8 @@ const HoverTextAnimation = ({ tag, text, className }) => {
   const [displayText, setDisplayText] = useState(text);
   const [intervalId, setIntervalId] = useState(null);
 
+  const Tag = tag ? tag : "h1";
+
   const handleMouseOver = () => {
     let iteration = 0;
     clearInterval(intervalId);
@@ -33,8 +35,6 @@ const HoverTextAnimation = ({ tag, text, className }) => {
 
     setIntervalId(newIntervalId);
   };
-
-  const Tag = tag ? tag : "h1";
 
   return (
     <Tag className={className} onMouseOver={handleMouseOver} data-value={text}>
