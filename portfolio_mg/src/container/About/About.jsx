@@ -36,14 +36,14 @@ const About = () => {
             whileHover={{ scale: 1.1 }}
             transition={{ duration: 0.5, type: "tween" }}
             className="app__profile-item"
-            key={about.title + i}
+            key={`about ${i}`}
           >
             <img src={urlFor(about.imgUrl)} alt={about.title} />
             <h2 className="bold-text" style={{ marginTop: 20 }}>
-              {about.title}
+              {about.title.en}
             </h2>
             <p className="p-text" style={{ marginTop: 10 }}>
-              {about.description}
+              {about.description.en}
             </p>
           </motion.div>
         ))}

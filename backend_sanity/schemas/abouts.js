@@ -3,19 +3,15 @@ export default {
   title: 'Abouts',
   type: 'document',
   fields: [
+    {title: 'Title', name: 'title', type: 'localeString'},
     {
-      name: 'title',
-      title: 'Title',
-      type: 'string',
-    },
-    {
-      name: 'description',
       title: 'Description',
-      type: 'string',
+      name: 'description',
+      type: 'localeString',
     },
     {
-      name: 'imgUrl',
       title: 'ImgUrl',
+      name: 'imgUrl',
       type: 'image',
       options: {
         hotspot: true,

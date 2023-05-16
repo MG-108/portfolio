@@ -56,7 +56,7 @@ const Work = () => {
       <div className="app__work-filter">
         {projectsCategories.map((item, index) => (
           <div
-            key={index}
+            key={`category${index}`}
             className={`app__work-filter-item app__flex p-text ${
               activeFilter === item ? "item-active" : ""
             }`}
@@ -73,7 +73,7 @@ const Work = () => {
         className="app__work-portfolio"
       >
         {filterWork.map((work, index) => (
-          <div className="app__work-item app__flex" key={index}>
+          <div className="app__work-item app__flex" key={`filter${index}`}>
             <div className="app_work-img app__flex">
               {/* PROJECT IMG */}
               <img src={urlFor(work.imgUrl)} alt={work.name} />
@@ -117,7 +117,7 @@ const Work = () => {
             <div className="app__work-content app__flex">
               <h4 className="bold-text">{work.title}</h4>
               <p className="p-text" style={{ marginTop: 10 }}>
-                {work.description}
+                {work.description.en}
               </p>
 
               <div className="app__work-tag app__flex">
