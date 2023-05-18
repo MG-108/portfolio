@@ -21,7 +21,7 @@ const LanguageSwitcher = () => {
   return (
     <>
       {languageOptions.map((language) => (
-        <div
+        <button
           className="language-switcher"
           key={language.value}
           onClick={() => {
@@ -29,7 +29,7 @@ const LanguageSwitcher = () => {
           }}
         >
           <img src={language.flag} alt={language.name} />
-        </div>
+        </button>
       ))}
     </>
   );
