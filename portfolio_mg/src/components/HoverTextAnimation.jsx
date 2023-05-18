@@ -1,10 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 const HoverTextAnimation = ({ tag, text, className }) => {
   const [displayText, setDisplayText] = useState(text);
   const [intervalId, setIntervalId] = useState(null);
+
+  useEffect(() => {
+    const translatedText = text;
+    setDisplayText(translatedText);
+  }, [text]);
 
   const Tag = tag ? tag : "h1";
 

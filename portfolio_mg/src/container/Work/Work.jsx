@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { AiFillEye, AiFillGithub } from "react-icons/ai";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
@@ -13,6 +14,7 @@ const Work = () => {
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1 });
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
+  const { i18n, t } = useTranslation();
 
   const projectsCategories = ["Redux", "Web App", "UI/UX"];
 
@@ -45,13 +47,14 @@ const Work = () => {
 
   if (isLoading) return <div>Loading...</div>;
 
+  const portfolio =
+    i18n.resolvedLanguage === "en"
+      ? t("portfolio", { text: "Portfolio" })
+      : t("portfolio", { text: "Portfólio" });
+
   return (
     <>
-      <HoverTextAnimation
-        tag={"h2"}
-        text={"Portfolio"}
-        className={"head-text"}
-      />
+      <HoverTextAnimation tag={"h2"} text={portfolio} className={"head-text"} />
 
       <div className="app__work-filter">
         {projectsCategories.map((item, index) => (
@@ -117,7 +120,9 @@ const Work = () => {
             <div className="app__work-content app__flex">
               <h4 className="bold-text">{work.title}</h4>
               <p className="p-text" style={{ marginTop: 10 }}>
-                {work.description.en}
+                {i18n.resolvedLanguage === "en"
+                  ? work.description.en
+                  : work.description.pt}
               </p>
 
               <div className="app__work-tag app__flex">

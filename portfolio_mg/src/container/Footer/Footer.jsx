@@ -1,4 +1,5 @@
 import { useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { HoverTextAnimation } from "../../components";
@@ -6,6 +7,8 @@ import { images } from "../../constants";
 import "./Footer.scss";
 
 const Footer = () => {
+  const { i18n, t } = useTranslation();
+
   const {
     register,
     trigger,
@@ -18,13 +21,15 @@ const Footer = () => {
       e.preventDefault();
     }
   };
+
+  const contactMe =
+    i18n.resolvedLanguage === "en"
+      ? t("contact", { text: "Contact Me" })
+      : t("contact", { text: "Contate Me" });
+
   return (
     <>
-      <HoverTextAnimation
-        tag={"h2"}
-        text={"Contact me"}
-        className={"head-text"}
-      />
+      <HoverTextAnimation tag={"h2"} text={contactMe} className={"head-text"} />
       <div className="app__footer-cards">
         <div className="app__footer-card ">
           <img src={images.email} alt="email" />
@@ -48,7 +53,7 @@ const Footer = () => {
           <input
             className="p-text"
             type="name"
-            placeholder="Name"
+            placeholder={t("placeholder1")}
             {...register("name", {
               required: true,
               maxLength: 100,
@@ -68,7 +73,7 @@ const Footer = () => {
           <input
             className="p-text"
             type="email"
-            placeholder="Your Email"
+            placeholder={t("placeholder2")}
             {...register("email", {
               required: true,
               //regex to check if its a valid email
@@ -87,7 +92,7 @@ const Footer = () => {
         <div>
           <textarea
             className="p-text"
-            placeholder="Your Message"
+            placeholder={t("placeholder3")}
             {...register("message", {
               required: true,
               maxLength: 2000,
@@ -105,7 +110,7 @@ const Footer = () => {
         </div>
 
         <button type="submit" className="p-text">
-          Send Message
+          {t("formBtn")}
         </button>
       </form>
     </>

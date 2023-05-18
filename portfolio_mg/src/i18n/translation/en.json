@@ -1,0 +1,26 @@
+{
+  "translation": {
+    "navHome": "home",
+    "navAbout": "about",
+    "navWork": "work",
+    "navSkills": "skills",
+    "navContact": "contact",
+
+    "headerCard1": "Hello, I am",
+
+    "about1": "Quality apps",
+    "about2": "lead to",
+    "about3": "Successful",
+    "about4": "Businesses",
+
+    "portfolio": "{{text}}",
+    "contact": "{{text}}",
+
+    "placeholder1": "Name",
+    "placeholder2": "Your Email",
+    "placeholder3": "Your Message",
+    "formBtn": "Send Message",
+
+    "copyright": "All rights reserved"
+  }
+}

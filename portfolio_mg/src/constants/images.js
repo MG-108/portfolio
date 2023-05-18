@@ -8,6 +8,9 @@ import react from "../assets/react.svg";
 
 import email from "../assets/email.png";
 
+import BR from "../assets/brazil.png";
+import USA from "../assets/usa.png";
+
 export default {
   circle,
   mgLogo,
@@ -18,4 +21,7 @@ export default {
   sass,
 
   email,
+
+  BR,
+  USA,
 };

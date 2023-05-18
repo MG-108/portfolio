@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import { AppWrap } from "../../wrapper";
 import { images } from "../../constants";
@@ -26,6 +27,8 @@ const scaleVariants = {
 const skillImages = [images.javascript, images.react, images.sass];
 
 const Header = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="app__header app__flex">
       {/* HEADER */}
@@ -40,7 +43,7 @@ const Header = () => {
           <div className="badge-cmp app__flex">
             <span>👋</span>
             <div style={{ marginLeft: 20 }}>
-              <p className="p-text">Hello, I am</p>
+              <p className="p-text">{t("headerCard1")}</p>
               <h1 className="head-text">Matheus</h1>
             </div>
           </div>

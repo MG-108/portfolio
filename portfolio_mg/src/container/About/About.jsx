@@ -1,11 +1,13 @@
 import { useQuery } from "@tanstack/react-query";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 import { urlFor, client } from "../../client";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import "./About.scss";
 
 const About = () => {
+  const { t, i18n } = useTranslation();
   const query = `*[_type == "abouts"] | order(_createdAt asc)`;
 
   const { data, isLoading, error } = useQuery({
@@ -22,11 +24,17 @@ const About = () => {
   return (
     <>
       <h2 className="head-text about-title">
-        I Know That{" "}
-        <span>
-          Good Apps <br />
-        </span>
-        means <span>Good Business</span>
+        <span> {t("about1")} </span> {t("about2")} <br />
+        {i18n.resolvedLanguage === "en" ? (
+          <span>{t("about3")} </span>
+        ) : (
+          t("about3")
+        )}
+        {i18n.resolvedLanguage === "en" ? (
+          t("about4")
+        ) : (
+          <span> {t("about4")} </span>
+        )}
       </h2>
 
       <div className="app__profile">
@@ -40,10 +48,12 @@ const About = () => {
           >
             <img src={urlFor(about.imgUrl)} alt={about.title} />
             <h2 className="bold-text" style={{ marginTop: 20 }}>
-              {about.title.en}
+              {i18n.resolvedLanguage === "en" ? about.title.en : about.title.pt}
             </h2>
             <p className="p-text" style={{ marginTop: 10 }}>
-              {about.description.en}
+              {i18n.resolvedLanguage === "en"
+                ? about.description.en
+                : about.description.pt}
             </p>
           </motion.div>
         ))}

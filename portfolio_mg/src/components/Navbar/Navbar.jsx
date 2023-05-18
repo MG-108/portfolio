@@ -1,14 +1,23 @@
 import { useState } from "react";
-import { HiMenuAlt4, HiX } from "react-icons/hi";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
+import { HiMenuAlt4, HiX } from "react-icons/hi";
 
 import { images } from "../../constants";
 import "./Navbar.scss";
+import { LanguageSwitcher } from "..";
 
 const Navbar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
+  const { t } = useTranslation();
 
-  const navLinks = ["home", "about", "work", "skills", "contact"];
+  const navLinks = [
+    { label: t("navHome"), value: "home" },
+    { label: t("navAbout"), value: "about" },
+    { label: t("navWork"), value: "work" },
+    { label: t("navSkills"), value: "skills" },
+    { label: t("navContact"), value: "contact" },
+  ];
 
   return (
     <nav className="app__navbar">
@@ -20,13 +29,17 @@ const Navbar = () => {
       {/* Desktop Nav */}
       <ul className="app__navbar-links">
         {navLinks.map((item) => (
-          <li className="app__flex p-text" key={`link-${item}`}>
+          <li className="app__flex p-text" key={`desktop-${item.value}`}>
             {/* div to add a dot on hover in navlinks */}
             <div />
-            <a href={`#${item}`}>{item}</a>
+            <a href={`#${item.value}`}>{item.label}</a>
           </li>
         ))}
       </ul>
+
+      <div className="app__flex">
+        <LanguageSwitcher />
+      </div>
 
       {/* Mobile NavMenu */}
       <div className="app__navbar-menu">
@@ -40,9 +53,12 @@ const Navbar = () => {
             <HiX onClick={() => setToggleMenu(false)} />
             <ul>
               {navLinks.map((item) => (
-                <li key={item}>
-                  <a href={`#${item}`} onClick={() => setToggleMenu(false)}>
-                    {item}
+                <li key={`mobile-${item.value}`}>
+                  <a
+                    href={`#${item.value}`}
+                    onClick={() => setToggleMenu(false)}
+                  >
+                    {item.label}
                   </a>
                 </li>
               ))}
