@@ -1,5 +1,8 @@
+import "./NavigationDots.scss";
+
+const navLinks = ["home", "about", "work", "skills", "contact"];
+
 const NavigationDots = ({ active }) => {
-  const navLinks = ["home", "about", "work", "skills", "contact"];
   return (
     <div className="app__navigation">
       {navLinks.map((item, index) => (

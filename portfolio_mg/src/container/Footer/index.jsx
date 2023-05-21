@@ -22,10 +22,11 @@ const Footer = () => {
     }
   };
 
-  const contactMe =
-    i18n.resolvedLanguage === "en"
-      ? t("contact", { text: "Contact Me" })
-      : t("contact", { text: "Contate Me" });
+  const isEnglish = i18n.resolvedLanguage === "en";
+
+  const contactMe = isEnglish
+    ? t("contact", { text: "Contact Me" })
+    : t("contact", { text: "Entre em Contato" });
 
   return (
     <>

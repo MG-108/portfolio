@@ -6,8 +6,10 @@ import { useTranslation } from "react-i18next";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
-import { HoverTextAnimation } from "../../components";
+import { BoldText, HoverTextAnimation, ParagraphText } from "../../components";
 import "./Work.scss";
+
+const projectsCategories = ["Redux", "Web App", "UI/UX"];
 
 const Work = () => {
   const [activeFilter, setActiveFilter] = useState("Redux");
@@ -15,8 +17,6 @@ const Work = () => {
   const [works, setWorks] = useState([]);
   const [filterWork, setFilterWork] = useState([]);
   const { i18n, t } = useTranslation();
-
-  const projectsCategories = ["Redux", "Web App", "UI/UX"];
 
   const query = '*[_type == "works"] | order(_createdAt asc)';
 
@@ -47,10 +47,11 @@ const Work = () => {
 
   if (isLoading) return <div>Loading...</div>;
 
-  const portfolio =
-    i18n.resolvedLanguage === "en"
-      ? t("portfolio", { text: "Portfolio" })
-      : t("portfolio", { text: "Portfólio" });
+  const isEnglish = i18n.resolvedLanguage === "en";
+
+  const portfolio = isEnglish
+    ? t("portfolio", { text: "Portfolio" })
+    : t("portfolio", { text: "Portfólio" });
 
   return (
     <>
@@ -118,15 +119,15 @@ const Work = () => {
 
             {/* PROJECT DETAILS */}
             <div className="app__work-content app__flex">
-              <h4 className="bold-text">{work.title}</h4>
-              <p className="p-text" style={{ marginTop: 10 }}>
-                {i18n.resolvedLanguage === "en"
-                  ? work.description.en
-                  : work.description.pt}
-              </p>
+              <BoldText text={work.title} />
+
+              <ParagraphText
+                styles={{ marginTop: 10 }}
+                text={isEnglish ? work.description.en : work.description.pt}
+              />
 
               <div className="app__work-tag app__flex">
-                <p className="p-text"> {work.tags ? work.tags[0] : ""}</p>
+                <ParagraphText text={work.tags ? work.tags[0] : null} />
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 import { AppWrap, MotionWrap } from "../../wrapper";
 import { urlFor, client } from "../../client";
-import { HoverTextAnimation } from "../../components";
+import { HoverTextAnimation, ParagraphText } from "../../components";
 import "./Skills.scss";
 
 const Skills = () => {
@@ -40,7 +40,7 @@ const Skills = () => {
                 <img src={urlFor(skill.icon)} alt={skill.name} />
               </div>
 
-              <p className="p-text">{skill.name}</p>
+              <ParagraphText text={skill.name} />
             </motion.div>
           ))}
         </motion.div>

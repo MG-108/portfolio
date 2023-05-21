@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { AppWrap } from "../../wrapper";
 import { images } from "../../constants";
 import "./Header.scss";
-import { HoverTextAnimation } from "../../components";
+import { HoverTextAnimation, ParagraphText } from "../../components";
 
 const scaleVariants = {
   whileInView: {
@@ -43,7 +43,7 @@ const Header = () => {
           <div className="badge-cmp app__flex">
             <span>👋</span>
             <div style={{ marginLeft: 20 }}>
-              <p className="p-text">{t("headerCard1")}</p>
+              <ParagraphText text={t("headerCard1")} />
               <h1 className="head-text">Matheus</h1>
             </div>
           </div>

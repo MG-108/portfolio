@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { urlFor, client } from "../../client";
 import { AppWrap, MotionWrap } from "../../wrapper";
 import "./About.scss";
+import { BoldText, ParagraphText } from "../../components";
 
 const About = () => {
   const { t, i18n } = useTranslation();
@@ -21,20 +22,14 @@ const About = () => {
 
   if (isLoading) return <div>Loading</div>;
 
+  const isEnglish = i18n.resolvedLanguage === "en";
+
   return (
     <>
       <h2 className="head-text about-title">
         <span> {t("about1")} </span> {t("about2")} <br />
-        {i18n.resolvedLanguage === "en" ? (
-          <span>{t("about3")} </span>
-        ) : (
-          t("about3")
-        )}
-        {i18n.resolvedLanguage === "en" ? (
-          t("about4")
-        ) : (
-          <span> {t("about4")} </span>
-        )}
+        {isEnglish ? <span>{t("about3")} </span> : t("about3")}
+        {isEnglish ? t("about4") : <span> {t("about4")} </span>}
       </h2>
 
       <div className="app__profile">
@@ -47,14 +42,16 @@ const About = () => {
             key={`about ${i}`}
           >
             <img src={urlFor(about.imgUrl)} alt={about.title} />
-            <h2 className="bold-text" style={{ marginTop: 20 }}>
-              {i18n.resolvedLanguage === "en" ? about.title.en : about.title.pt}
-            </h2>
-            <p className="p-text" style={{ marginTop: 10 }}>
-              {i18n.resolvedLanguage === "en"
-                ? about.description.en
-                : about.description.pt}
-            </p>
+
+            <BoldText
+              styles={{ marginTop: 20 }}
+              text={isEnglish ? about.title.en : about.title.pt}
+            />
+
+            <ParagraphText
+              styles={{ marginTop: 10 }}
+              text={isEnglish ? about.description.en : about.description.pt}
+            />
           </motion.div>
         ))}
       </div>

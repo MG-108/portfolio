@@ -1,13 +1,17 @@
 import NavigationDots from "./NavigationDots";
-import SocialMedia from "./SocialMedia";
-import Navbar from "./Navbar/Navbar";
-import HoverTextAnimation from "./HoverTextAnimation";
-import LanguageSwitcher from "./LanguageSwitcher/LanguageSwitcher";
+import SocialMediaLinks from "./SocialMediaLinks";
+import Navbar from "./Navbar";
+import HoverTextAnimation from "./Text/HoverTextAnimation";
+import LanguageSwitcher from "./LanguageSwitcher";
+import ParagraphText from "./Text/ParagraphText";
+import BoldText from "./Text/BoldText";
 
 export {
   NavigationDots,
-  SocialMedia,
+  SocialMediaLinks,
   Navbar,
   HoverTextAnimation,
+  BoldText,
+  ParagraphText,
   LanguageSwitcher,
 };

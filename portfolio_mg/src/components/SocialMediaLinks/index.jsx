@@ -1,5 +1,6 @@
 import { BsLinkedin } from "react-icons/bs";
 import { AiFillGithub } from "react-icons/ai";
+import "./SocialMediaLinks.scss";
 
 const SocialMedia = () => {
   return (
